@@ -1,0 +1,55 @@
+<html>
+<head>
+<title> Add Switch Details</title>
+<style>
+body{
+background-color:#7FFFD4
+
+}
+a:link, a:visited,button{
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active,button:hover {
+  background-color: red;
+}
+h4{
+color:blue;
+}
+
+</style>
+</head>
+<body>
+
+<div class="s">
+<p><a href="{% url 'main' %}"><input type="button" value="BACK"></input></a>
+{% if user.is_authenticated %}
+<a href="{% url 'logout' %}"><input type="button" value="Logout"></input></a>
+{% endif %}
+</p>
+</div>
+<center>
+<div>
+<h1>Enter Switch Details</h1>
+<form action="{% url 'addswitch' %}" method="POST">
+{% csrf_token %}
+<input type="text" placeholder="switch_model" name="switch_model"><br><br>
+<input type="text" placeholder="switch_ip" name="switch_ip"><br><br>
+<input type="text" placeholder="netmask" name="netmask"><br><br>
+<input type="text" placeholder="gateway" name="gateway"><br><br>
+<input type="text" placeholder="mac_address" name="mac_address"><br><br>
+<button type="submit"> Add </button>
+</form>
+<div>
+	{% for message in messages %}
+	<h4>{{message}}</h4>
+	{% endfor %}
+</div>
+</div></center>
+</body>
+</html>

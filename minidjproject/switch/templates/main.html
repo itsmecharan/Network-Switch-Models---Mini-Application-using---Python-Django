@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+
+table, th, td {
+  border: 3px solid black;
+width:50%;
+font-size: 125%;
+background-color:#BDB76B;
+
+}
+h1{
+color:Black;
+background-color:#BDB76B;
+width:50%;
+border: 3px solid black;
+}
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+div.s {
+        float: right;
+      }
+
+</style>
+</head>
+<body >
+
+
+
+{% if user.is_authenticated %}
+<a href="{% url 'logout' %}"><input type="button" value="Logout"></input></a>
+{% endif %}
+<div class="s">
+<a href="{% url 'addswitch' %}"><input type="button" value="Add Switches" ></input></a>
+</div>
+
+<center>
+<h3>Hello, {{user.first_name}}</h3>
+<h1 align="center">Switch Summary</h1></center>
+
+
+
+<table style="width:50%"  align="center">
+
+  <tr>
+    <th align="center">Switch Model</th>
+    <th align="center">IP address</th>
+  </tr>
+{% for val in list %}
+{% csrf_token %}
+  <tr>
+    <td align="center">{{val.switch_model}}</td>
+    <td align="center"><a href="displaybyIP?var={{val.switch_ip}}">{{val.switch_ip}}</a></td>
+  </tr>
+{% endfor %}
+  
+</table><br>
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+<head>
+<title> Switch Details </title>
+<style>
+table, th, td {
+  border: 3px solid black;
+width:50%;
+font-size: 125%;
+background-color:#BDB76B;
+
+}
+h1{
+color:Black;
+background-color:#BDB76B;
+width:50%;
+border: 3px solid black;
+}
+a:link, a:visited{
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+</style>
+</head>
+<body>
+<div class="s">
+<p><a href="{% url 'main' %}"><input type="button" value="BACK"></input></a>
+{% if user.is_authenticated %}
+<a href="{% url 'logout' %}"><input type="button" value="Logout"></input></a>
+{% endif %}
+</p>
+</div>
+<center><div>
+<h1> Switch Details</h1>
+<table>
+    <tr>
+      <th>Switch IP</th>
+      {% for data in ip %}
+      <td>{{data.switch_ip}}</td>
+      {% endfor %}
+     </tr>
+    <tr>
+      <th>Netmask</th>
+      {% for data in ip %}
+      <td>{{data.netmask}}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      <th>Gateway</th>
+      {% for data in ip %}
+      <td>{{data.gateway}}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      <th>MACaddress</th>
+      {% for data in ip %}
+      <td>{{data.mac_address}}</td>
+      {% endfor %}
+    </tr>
+</table>
+
+</div></center>
+</body>
+</html>

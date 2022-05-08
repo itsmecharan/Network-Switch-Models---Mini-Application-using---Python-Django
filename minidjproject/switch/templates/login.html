@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>
+Login
+</title>
+<style>
+body{
+background-color:#FFEBCD
+}
+a:link, a:visited,button {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+a:hover, a:active,button:hover {
+  background-color: red;
+}
+h4{
+color:blue;
+
+}
+
+</style>
+</head>
+<body>
+<center><div>
+<h3>Employee Login</h3>
+<form action="{% url 'login' %}" method="POST">
+{% csrf_token %}
+<input type="text" name="username" placeholder="username" required><br><br>
+<input type="password" name="password" placeholder="password" required><br><br>
+<button type="submit"> Login</button>
+</form>
+<a href="{% url 'register' %}"> Register</a>
+<div>
+	{% for message in messages %}
+	<h4>{{message}}</h4>
+	{% endfor %}
+	</div>
+</div></center>
+</body>
+</html>
+
